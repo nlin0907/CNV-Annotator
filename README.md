@@ -4,7 +4,7 @@ CNV Annotator is a compilation of programs and scripts used to annotate CNVs fro
 
 ## Usage
 Steps:
-1) Set up directory 
+1) Set up directory and install BEDOPS
 ```python
 mkdir annotator
 ``` 
