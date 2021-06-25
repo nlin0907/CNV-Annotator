@@ -40,7 +40,7 @@ with your own paths. SDIR is path to sub-directory (aka your different analyses)
 If you want to use HG38 GFF3 file, replace lines 20, 21, and 26 with
 ```bash
 python $DIR/gff_parsing.py $DIR/DGV.GS.hg38.gff3 $DIR/DGVHG38.bed
-sort-bed $DIR/DGVHG37.bed > $DIR/sorted_DGVHG38.bed
+sort-bed $DIR/DGVHG38.bed > $DIR/sorted_DGVHG38.bed
 
 bedmap --echo --echo-map-id-uniq --fraction-both 0.75 $SDIR/anno_calls3.bed $DIR/sorted_DGVHG38.bed > $SDIR/annotated_calls.bed
 ```
