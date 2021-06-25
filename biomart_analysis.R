@@ -10,7 +10,7 @@ attributes<-c("chromosome_name", "start_position", "end_position", "hgnc_symbol"
 connection <- file("/Users/nicolelin/analysis3_calls.txt", open="r")
 lines <- readLines(connection)
 
-for (i in 1:length(lines)) {
+for (i in 2:length(lines)) {
   line = lines[i]
   line_elements <- scan(text=line, what = character(1), sep="\t")
   chrom = line_elements[2]
