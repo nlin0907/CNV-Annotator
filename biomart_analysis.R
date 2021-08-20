@@ -1,6 +1,6 @@
 library(biomaRt)
 ensembl = useMart("ENSEMBL_MART_ENSEMBL", dataset="hsapiens_gene_ensembl", host="grch37.ensembl.org", path="/biomart/martservice")
-attributes<-c("chromosome_name", "start_position", "end_position", "hgnc_symbol", "mim_morbid_description", "phenotype_description")
+attributes<-c("chromosome_name", "start_position", "end_position", "external_gene_name", "mim_morbid_description", "phenotype_description")
 # gene
 # attributes<-c("chromosome_name", "start_position", "end_position", "hgnc_symbol")
 # phenotype
