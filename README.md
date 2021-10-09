@@ -20,7 +20,7 @@ for GFF3 file in HG37:
  foo@bar:~$ wget http://dgv.tcag.ca/dgv/docs/DGV.GS.March2016.50percent.GainLossSep.Final.hg19.gff3
 ```
 3) Make sub-directories in the annotator directory for different analyses (i.e. analysis1, analysis2) and place calls.txt from CoNIFER in respective sub-directories
-4) Run biomart_analysis.R on each calls.txt for gene, phenotype description, and MIM morbid description and place ref-biomart.txt (biomart_analysis.R output file) in respective sub-directories.
+4) Run biomart_analysis.R on each calls.txt for gene, phenotype description, and MIM morbid description and place ref-biomart.txt (biomart_analysis.R output file) in respective sub-directories. Depending on how your calls.txt file is formatted, you might have to change chrom = line_elements[2] to chrom = line_elements[1], start_in = line_elements[3] to start_in = line_elements[2], and stop_in = line_elements[3] to stop_in = line_elements[2]
 IMPORTANT NOTE:
 To use HG38 ensembl genes, replace the following line
 ```python
