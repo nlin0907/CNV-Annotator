@@ -28,6 +28,6 @@ while (x < len(lines)):
 
     x+=1
 
-    f1.write(chromosome + "\t" + start + "\t" + stop + "\t" + state)
+    f1.write(chromosome + "\t" + start + "\t" + stop + "\t" + state + "\n")
 
 f1.close()
