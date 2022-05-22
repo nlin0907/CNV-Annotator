@@ -17,6 +17,10 @@ f=open(sys.argv[1], "r")
 lines=f.readlines()
 
 f1 = open(sys.argv[2],"w")
+
+#print(sys.argv[3])
+value = sys.argv[3]
+
 x=1
 
 while (x < len(lines)):
@@ -26,8 +30,12 @@ while (x < len(lines)):
     stop = lines[x].split('\t')[3]
     state = lines[x].split('\t')[4]
 
+    rest = ""
+    for y in range(1,int(value)+1):
+        rest += "\t" + lines[x].split('\t')[y+4]
+
     x+=1
 
-    f1.write(chromosome + "\t" + start + "\t" + stop + "\t" + state + "\n")
+    f1.write(chromosome + "\t" + start + "\t" + stop + "\t" + state + rest + "\n")
 
 f1.close()
