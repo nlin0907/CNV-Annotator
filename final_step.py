@@ -20,11 +20,16 @@ lines=f.readlines()
 f1=open(sys.argv[2], "r")
 lines1 = f1.readlines()
 
-f2 = open(sys.argv[3],"w")
+f3=open(sys.argv[3], "r")
+lines3 = f3.readlines()
+header = lines3[0].rstrip()
+
+f2 = open(sys.argv[4],"w")
+
 x=0
 y=0
 
-f2.write("sampleID" + "\t" + "chromosome" + "\t" + "start" + "\t" + "stop" + "\t" + "genes" + "\t" + "phenotype_description" + "\t" +
+f2.write(header + "\t" + "genes" + "\t" + "phenotype_description" + "\t" +
          "mim_morbid_description" + "\t" + "highest_frequency" + "\t" + "number_of_sample_overlap" + "\t" + "sample_overlap" + "\n")
 
 while (x < len(lines)):
@@ -33,8 +38,14 @@ while (x < len(lines)):
     values = line.split("\t")
     values1 = line1.split("\t")
 
-    chrom, start, stop, state, genes, pheno, mim = values[0], values[1], values[2], values[3], values[4], values[5], values[6]
-    frequency, sample_overlap, num_sample_overlap = values[7], values[8], int(values[9])
+    cols = len(line.split("\t"))
+
+    rest = ""
+    for y in range(cols-6):
+        rest += "\t" + values[y]
+
+    genes, pheno, mim, frequency, sample_overlap, num_sample_overlap = values[cols-6], values[cols-5], values[cols-4], values[cols-3], values[cols-2], int(values[cols-1])
+    
     sampleID = values1[3]
     
     if (genes == ""):
@@ -67,7 +78,7 @@ while (x < len(lines)):
         sample_overlap = ';'.join(overlap)
         #print(sample_overlap)
 
-    f2.write(sampleID + "\t" + chrom + "\t" + start + "\t" + stop + "\t" + genes + "\t" + pheno + "\t" + mim + "\t" + frequency + "\t" + num_sample_overlap + "\t" + sample_overlap + "\n")
+    f2.write(sampleID + rest + "\t" + genes + "\t" + pheno + "\t" + mim + "\t" + frequency + "\t" + num_sample_overlap + "\t" + sample_overlap + "\n")
     x+=1
     
 f2.close()
