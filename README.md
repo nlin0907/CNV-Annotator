@@ -37,6 +37,16 @@ SDIR=/Users/nicolelin/annotator/analysis3
 DIR=/Users/nicolelin/annotator
 ```
 with your own paths. SDIR is path to sub-directory (aka your different analyses). DIR is path to annotator directory.
+
+If your calls.txt file is not in the format of sampleID, chromosome, start, end, type and has extra columns, replace the number on line 8 with the number of extra columns you have. i.e. If you have a calls.txt file with the columns sampleID, chromosome, start, end, type, variant_type, unique, ID, then change 
+```bash
+python $DIR/calls_txt_to_bed.py $SDIR/calls.txt $SDIR/calls.bed 15
+```
+to
+```bash
+python $DIR/calls_txt_to_bed.py $SDIR/calls.txt $SDIR/calls.bed 3
+```
+
 If you want to use HG38 GFF3 file, replace lines 20, 21, and 26 with
 ```bash
 python $DIR/gff_parsing.py $DIR/DGV.GS.hg38.gff3 $DIR/DGVHG38.bed
@@ -44,7 +54,9 @@ sort-bed $DIR/DGVHG38.bed > $DIR/sorted_DGVHG38.bed
 
 bedmap --echo --echo-map-id-uniq --fraction-both 0.75 $SDIR/anno_calls3.bed $DIR/sorted_DGVHG38.bed > $SDIR/annotated_calls.bed
 ```
+
 Now, you're ready to activate the bash script.
+
 6) Give permissions to bash script:
 ```console
 foo@bar:~$ chmod u+x annotate.sh
